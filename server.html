@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sreemantam Decors | Premium Event Decor Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Theme: Gold and Maroon Red */
+            --primary: #8B0000;      /* DarkRed (Deep Maroon) */
+            --secondary: #DC143C;    /* Crimson (Vibrant Red) */
+            --accent: #D69E2E;       /* Gold */
+            
+            --text: #333333;         
+            --light: #fff0f0;        
+            --dark: #380000;         
+            
+            --gold: #D69E2E;         
+            --gold-light: #ECB25E;   
+            --card-dark-bg: #4a0000; 
+            
+            --transition: all 0.35s ease-in-out;
+
+            --primary-rgb: 139, 0, 0;    
+            --secondary-rgb: 220, 20, 60;   
+            --accent-rgb: 214, 158, 46; 
+            --gold-rgb: 214, 158, 46;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--light);
+            overflow-x: hidden; 
+            opacity: 0; 
+            animation: pageLoadFadeIn 1s ease-out forwards;
+        }
+
+        @keyframes pageLoadFadeIn {
+            to { opacity: 1; }
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        header {
+            background-color: var(--dark); 
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            color: var(--light);
+        }
+        
+        header.scrolled {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: #280000; 
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: padding 0.3s ease;
+        }
+        
+        header.scrolled nav {
+            padding: 10px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold); 
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: font-size 0.3s ease;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: height 0.3s ease;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none; 
+            gap: 35px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light); 
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--accent); 
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold); 
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 26px; 
+            cursor: pointer;
+            color: var(--light);
+            z-index: 1005; 
+            padding: 5px;
+        }
+        
+        .hero {
+            padding-top: 180px; 
+            padding-bottom: 120px;
+            text-align: center;
+            background: linear-gradient(rgba(var(--primary-rgb), 0.65), rgba(var(--secondary-rgb), 0.75)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--light); 
+            position: relative;
+            min-height: 80vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInSlideUp 1s ease-out 0.3s forwards; 
+        }
+        
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            color: white; 
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent); 
+            color: var(--dark); 
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent); 
+            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(var(--gold-rgb), 0.3); 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent); 
+            border-color: var(--accent); 
+            transform: translateY(-4px) scale(1.05); 
+            box-shadow: 0 15px 30px rgba(var(--gold-rgb), 0.4); 
+        }
+        
+        .btn-outline { 
+            background-color: transparent;
+            color: white;
+            margin-left: 15px;
+            box-shadow: none;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary); 
+            border-color: white;
+        }
+        
+        .section {
+            padding: 100px 0; 
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px; 
+        }
+        
+        .section-title h2 {
+            font-size: 40px; 
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary); 
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px; 
+            height: 4px;
+            background-color: var(--secondary); 
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 650px; 
+            margin: 0 auto;
+            color: #555; 
+            font-size: 17px; 
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; 
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid transparent; 
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.2); 
+            border-left-color: var(--primary); 
+        }
+        
+        .service-img {
+            width: 100%;
+            height: 240px; 
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 25px; 
+            flex-grow: 1; 
+        }
+        
+        .service-content h3 {
+            font-size: 22px; 
+            margin-bottom: 12px;
+            color: var(--primary); 
+        }
+        .service-content p {
+            font-size: 15px;
+            margin-bottom: 15px;
+            color: #4A5568;
+        }
+        
+        .service-content ul {
+            list-style: none;
+            margin-bottom: 0; 
+        }
+        
+        .service-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 15px;
+            color: #4A5568;
+        }
+        
+        .service-content li::before {
+            content: '\f00c'; 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: var(--secondary); 
+            font-size: 14px;
+        }
+        
+        /* Our Team Section */
+        .team-section {
+            background-color: white;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .team-member {
+            text-align: center;
+            padding: 25px;
+            background-color: var(--light);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.08);
+            transition: var(--transition);
+            border: 1px solid #ffe8e8;
+        }
+        .team-member:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.15);
+        }
+        .team-member-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--secondary);
+            padding: 3px;
+            background-color: white;
+        }
+        .team-member h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        .team-member-role {
+            font-size: 14px;
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .team-member p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .logo { font-size: 26px; }
+            .logo img { height: 45px; }
+            .nav-links { gap: 25px; }
+            .nav-links a { font-size: 15px; }
+
+            .hero { padding-top: 160px; padding-bottom: 100px; min-height: 70vh; }
+            .hero h1 { font-size: 44px; }
+            .hero p { font-size: 18px; max-width: 600px; }
+            
+            .section { padding: 80px 0; }
+            .section-title h2 { font-size: 36px; }
+            .section-title p { font-size: 16px; }
+        }
+        
+        @media (max-width: 768px) {
+            .logo { font-size: 24px; }
+            .logo img { height: 40px; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; 
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 40px;
+                gap: 20px; 
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                transition: right 0.35s ease-in-out; 
+            }
+            .nav-links.active { right: 0; }
+            .nav-links.active a { color: var(--text); font-size: 17px; } 
+            .nav-links.active a:hover { color: var(--primary); } 
+            .nav-links.active a::after { background-color: var(--primary); } 
+            
+            .mobile-menu-btn { display: block; }
+            
+            .hero { padding-top: 140px; padding-bottom: 80px; min-height: 60vh; }
+            .hero h1 { font-size: 36px; margin-bottom: 20px; }
+            .hero p { font-size: 17px; margin-bottom: 30px; }
+            
+            .btn-group { flex-direction: column; gap: 15px; align-items: center; }
+            .btn-group .btn, .btn-group .btn-outline { width: 80%; max-width: 320px; margin-left: 0; }
+            
+            .section-title h2 { font-size: 32px; }
+        }
+        
+        @media (max-width: 576px) {
+            .container { padding: 0 15px; }
+            .logo { font-size: 22px; }
+            .logo img { height: 35px; }
+
+            .hero { padding-top: 120px; padding-bottom: 60px; min-height: 50vh; }
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 16px; }
+            .btn-group .btn, .btn-group .btn-outline { width: 90%; padding: 12px 25px; font-size: 15px; }
+            
+            .section { padding: 60px 0; }
+            .section-title h2 { font-size: 28px; }
+            .section-title p { font-size: 15px; }
+        }
+
+        @media (max-width: 400px) { 
+            .logo { font-size: 20px; gap: 8px; }
+            .logo img { height: 30px; }
+            .nav-links { width: 250px; padding: 70px 25px; } 
+            .nav-links.active a { font-size: 16px; }
+
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 15px; }
+            .section-title h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="Sreemantam Decors Logo"> 
+                    Sreemantam Decors
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Events With Magical Decor</h1>
+                <p>We create unforgettable experiences with our premium event decoration services for weddings, corporate events, and special occasions.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn">Book Now</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Our Signature Services</h2>
+                <p>From intimate gatherings to grand celebrations, we bring your vision to life with exquisite decor.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wedding Decor" class="service-img">
+                    <div class="service-content">
+                        <h3>Wedding Decor</h3>
+                        <p>Complete wedding decoration solutions for your special day.</p>
+                        <ul>
+                            <li>Mandap Decorations</li>
+                            <li>Stage Backdrops</li>
+                            <li>Venue Lighting</li>
+                            <li>Floral Arrangements</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Haldi Ceremony" class="service-img">
+                    <div class="service-content">
+                        <h3>Haldi Ceremony</h3>
+                        <p>Vibrant decor for your pre-wedding celebrations.</p>
+                        <ul>
+                            <li>Floral Canopies</li>
+                            <li>Haldi Stage Setup</li>
+                            <li>Themed Decor Elements</li>
+                            <li>Custom Backdrops</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Mehndi Event" class="service-img">
+                    <div class="service-content">
+                        <h3>Mehndi Event</h3>
+                        <p>Colorful decor to complement your mehndi ceremony.</p>
+                        <ul>
+                            <li>Traditional Rajasthani Decor</li>
+                            <li>Boho Chic Themes</li>
+                            <li>String Light Installations</li>
+                            <li>Custom Seating</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="section team-section" id="team">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Our Creative Team</h2>
+                <p>Meet the passionate individuals behind our magical event creations.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member reveal">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Team Member Justin Pierre" class="team-member-img">
+                    <h3>Justin Pierre</h3>
+                    <p class="team-member-role">Lead Designer</p>
+                    <p>With an eye for detail and a passion for perfection, Justin brings dreams to life.</p>
+                </div>
+                <div class="team-member reveal" style="transition-delay: 0.1s;">
+                    <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Team Member Maha Chy" class="team-member-img">
+                    <h3>Maha Chy</h3>
+                    <p class="team-member-role">Event Coordinator</p>
+                    <p>Maha ensures every event flows seamlessly from concept to execution.</p>
+                </div>
+                <div class="team-member reveal" style="transition-delay: 0.2s;">
+                    <img src="https://randomuser.me/api/portraits/men/30.jpg" alt="Team Member Maher Zain" class="team-member-img">
+                    <h3>Maher Zain</h3>
+                    <p class="team-member-role">Floral Artist</p>
+                    <p>Maher's floral arrangements add a touch of natural elegance to every occasion.</p>
+                </div>
+                <div class="team-member reveal" style="transition-delay: 0.3s;">
+                    <img src="https://randomuser.me/api/portraits/women/35.jpg" alt="Team Member Aisha Khan" class="team-member-img">
+                    <h3>Aisha Khan</h3>
+                    <p class="team-member-role">Logistics Manager</p>
+                    <p>Aisha is the organizational backbone, making complex setups look effortless.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Let's Plan Your Dream Event</h2>
+                <p>Ready to bring your vision to life? Contact us today for a complimentary consultation.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Our Studio</h3>
+                            <p>123 Event Street, Jubilee Hills, Hyderabad, Telangana 500001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Call Us</h3>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Us</h3>
+                            <a href="mailto:info@sreemantamdecors.com">info@sreemantamdecors.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form reveal" style="transition-delay: 0.2s;">
+                    <form id="enquiryForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="e.g., John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="e.g., john.doe@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Event Details</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your event..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column"> 
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Sreemantam Decors Footer Logo" style="height: 40px; filter: brightness(0) invert(1);">
+                        Sreemantam Decors
+                    </div>
+                    <p>Crafting unforgettable moments with bespoke event decor. Your vision, our expertise.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li><a href="#services"><i class="fas fa-angle-right"></i> Services</a></li>
+                        <li><a href="#team"><i class="fas fa-angle-right"></i> Our Team</a></li>
+                        <li><a href="#contact"><i class="fas fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© <span id="currentYear"></span> Sreemantam Decors. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('menuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const body = document.body;
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
+                    mobileMenuBtn.innerHTML = isActive ? 
+                        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                    body.style.overflow = isActive ? 'hidden' : ''; 
+                });
+            }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const headerOffset = document.getElementById('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    if (navLinks && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        body.style.overflow = '';
+                    }
+                });
+            });
+            
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            // Intersection Observer for animations
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // Set current year in footer
+            const yearSpan = document.getElementById('currentYear');
+            if(yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Form submission
+            const enquiryForm = document.getElementById('enquiryForm');
+            if (enquiryForm) {
+                enquiryForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your enquiry! We will contact you shortly.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
